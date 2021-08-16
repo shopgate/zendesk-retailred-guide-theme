@@ -35,6 +35,27 @@ documented here.
 This customization is targeted at the article's page (`article_page.hbs`). There for you must open the article's page code\
 in zendesk admin panel, and inject the content of the `dist/style.css` to the top of the template.
 
+then inside of the template, in the place where we need to show the menu, put the following line:
+
+```html
+<ul id="toc" class="table-of-contents"></ul>
+```
+
+at the end of the template file, add these configurations:
+
+```html
+<script type="text/javascript">
+    $("#toc").toc({content: ".article-body", headings: "h2,h3,h4"});
+</script>
+
+<script type="text/javascript">
+  $('.table-of-contents').stickySidebar({
+    topSpacing: 60,
+    bottomSpacing: 60
+  });
+</script>
+```
+
 **⚡️ Danger!** Do not forget to add these three javascript dependencies in the same order on top of the template file `article_page.hbs`:
 
 ```html
@@ -54,6 +75,29 @@ in zendesk admin panel, and inject the content of the `dist/style.css` to the to
 </style>
 
 <!-- The rest of the template -->
+
 <div class="container-divider"></div>
-<div class="container">...</div>
+<div class="container">
+	<!-- ... -->
+  <div class="article-container" id="article-container">
+    <aside class="article-sidebar" aria-labelledby="section-articles-title">
+      <ul id="toc" class="table-of-contents"></ul>
+	  <!-- ... -->
+    </aside>
+
+	<!-- ... -->
+
+  </div>
+</div>
+
+<script type="text/javascript">
+    $("#toc").toc({content: ".article-body", headings: "h2,h3,h4"});
+</script>
+
+<script type="text/javascript">
+  $('.table-of-contents').stickySidebar({
+    topSpacing: 60,
+    bottomSpacing: 60
+  });
+</script>
 ```
