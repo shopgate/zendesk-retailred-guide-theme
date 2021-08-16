@@ -1,0 +1,15 @@
+{
+  "name": "zendesk-style",
+  "version": "1.0.0",
+  "description": "A customized style set for our zendesk retail.red guide theme",
+  "main": "index.js",
+  "repository": "git@github.com:shopgate/zendesk-retailred-guide-theme.git",
+  "author": "Aien Saidi <aien.saidi@shopgate.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "node-sass": "^6.0.1"
+  },
+  "scripts": {
+    "compile": "node-sass -o dist src/style.scss dist/style.css"
+  }
+}
